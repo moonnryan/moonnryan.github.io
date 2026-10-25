@@ -132,7 +132,7 @@ watch(activeHeading, async () => {
           </nav>
           <a v-if="frontmatter.profile?.email" class="about-profile-email" :href="'mailto:' + frontmatter.profile.email">{{ frontmatter.profile.email }}</a>
         </aside>
-        <div class="about-content"><div class="section-eyebrow">ABOUT ME</div><Content class="vp-doc" /></div>
+        <div class="about-content"><Content class="vp-doc" /></div>
       </div>
       <Content v-else :key="page.relativePath" />
     </main>

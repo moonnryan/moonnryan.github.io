@@ -196,22 +196,22 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .mermaid-figure > div { min-width: 0; }
 .mermaid-figure svg { display: block; margin: auto; max-width: 100%; height: auto; }
 .article-body.vp-doc .mermaid-figure p { margin: 0; font-size: inherit; line-height: inherit; color: inherit; }
-.about-layout { display: grid; grid-template-columns: 200px minmax(0, 1fr); gap: 72px; max-width: 1000px; margin: 60px auto 80px; min-height: 50vh; align-items: start; }
-.about-profile { text-align: center; padding-top: 25px; }
+.about-layout { display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 76px; margin: 60px 0 80px; min-height: 50vh; align-items: start; }
+.about-profile { text-align: left; }
 .about-avatar { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 8px; margin-bottom: 24px; }
-.about-monogram { display: grid; place-items: center; height: 90px; margin-bottom: 24px; }
+.about-monogram { display: grid; place-items: start; height: 68px; margin-bottom: 24px; }
 .about-monogram .brand-mark { width: 68px; height: 68px; }
 .about-monogram .brand-mark::after { width: 60px; height: 60px; left: 27px; top: -8px; }
 .about-profile-name { margin: 0; font-size: 25px; line-height: 1.4; font-weight: 600; letter-spacing: -.7px; overflow-wrap: anywhere; }
 .about-profile-tagline { margin: 8px 0 0; font-size: 13px; line-height: 1.8; color: var(--muted); }
-.about-profile-links { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 22px; margin-top: 23px; font-size: 14px; color: var(--ink); }
+.about-profile-links { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 22px; margin-top: 23px; font-size: 14px; color: var(--ink); }
 .about-profile-links a { display: inline-flex; align-items: center; justify-content: center; min-width: 28px; min-height: 32px; transition: color .2s, transform .2s; }
 .about-profile-links a:hover { color: var(--accent); transform: translateY(-2px); }
 .about-profile-links svg { display: block; width: 25px; height: 25px; }
 .about-profile-email { display: inline-block; margin-top: 15px; font-size: 13px; line-height: 1.6; color: var(--muted); overflow-wrap: anywhere; }
 .about-profile-email:hover { color: var(--accent); }
-.about-content { min-width: 0; }
-.about-layout .vp-doc h1 { margin: 14px 0 24px; font-size: 34px; font-weight: 450; }
+.about-content { min-width: 0; max-width: 760px; }
+.about-layout .vp-doc h1 { margin: 0 0 24px; font-size: 34px; font-weight: 450; }
 .about-layout .vp-doc h2 { border: 0; padding-top: 0; margin: 30px 0 14px; font-size: 21px; line-height: 1.5; font-weight: 550; }
 .about-layout .vp-doc p, .about-layout .vp-doc li { font-size: 16px; line-height: 1.85; color: var(--reading-text); }
 .about-layout .vp-doc p { margin: 16px 0; }
@@ -276,9 +276,8 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
   .article-body.vp-doc p, .article-body.vp-doc li { font-size: 17px; }
   .article-body.vp-doc table { font-size: 14px; }
   .about-layout { grid-template-columns: minmax(0, 1fr); gap: 34px; margin-top: 28px; margin-bottom: 65px; }
-  .about-profile { padding-top: 0; }
-  .about-avatar { width: min(180px, 100%); margin-inline: auto; }
-  .about-monogram { height: 80px; margin-bottom: 14px; }
+  .about-avatar { width: min(180px, 100%); margin-inline: 0; }
+  .about-monogram { height: 68px; margin-bottom: 20px; }
   .about-layout .vp-doc h1 { font-size: 29px; }
 }
 @media (prefers-reduced-motion: reduce) {
