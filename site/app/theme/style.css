@@ -211,6 +211,7 @@ a, button, input { -webkit-tap-highlight-color: transparent; }
 .about-profile-email { display: inline-block; margin-top: 15px; font-size: 13px; line-height: 1.6; color: var(--muted); overflow-wrap: anywhere; }
 .about-profile-email:hover { color: var(--accent); }
 .about-content { min-width: 0; width: 100%; max-width: 760px; justify-self: end; }
+.about-content .header-anchor { display: none; }
 .about-layout .vp-doc h1 { margin: 0 0 24px; font-size: 34px; font-weight: 450; }
 .about-layout .vp-doc h2 { border: 0; padding-top: 0; margin: 30px 0 14px; font-size: 21px; line-height: 1.5; font-weight: 550; }
 .about-layout .vp-doc p, .about-layout .vp-doc li { font-size: 16px; line-height: 1.85; color: var(--reading-text); }
