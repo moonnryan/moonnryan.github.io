@@ -1,7 +1,7 @@
 ---
 title: Qualcomm HTP 上 DEIM 的数值误差与拆图
 created: 2026-09-17
-updated: 2026-10-08
+updated: 2026-10-27
 status: ready
 blog: true
 tags: [Qualcomm, QNN, DEIMv2, FP16, 精度对齐, 异构推理]
@@ -150,6 +150,21 @@ QNN 官方文档说明，在支持浮点模型的 SoC 上，QAIRT 2.35 之后的
 
 # 五、用反证排除单一算子归因
 
+GELU 的精确表达使用高斯误差函数 Erf：
+
+$$
+\operatorname{erf}(x)=\frac{2}{\sqrt{\pi}}\int_0^x e^{-t^2}\,dt,\qquad
+\operatorname{GELU}(x)=\frac{x}{2}\left[1+\operatorname{erf}\left(\frac{x}{\sqrt{2}}\right)\right]
+$$
+
+因此，导出图中一串缩放、Erf、加法和乘法可能是在表达 GELU。后端可以分别执行这些节点，也可以将它们融合；GELU 还有 tanh 近似形式，比较时需要确认两边实际采用的表达及优化后的计算路径。
+
+Erf 的数学定义相同，内核仍可能在逼近方法、中间精度和运算顺序上不同。以 CANN 的一个公开 `arch35` 实现为例，其 FP16 分支使用 `half` 作为 Erf 计算 DAG 的类型，BF16 分支先转成 `float`，调用向量 Erf 后再转换回输出类型。这里展示的是该实现的类型安排；向量 Erf 的具体内部算法以及 Qualcomm HTP 的实现，不能由这段代码推断。输入和输出的数据类型也不足以单独确定中间运算精度。
+
+固定输入、暂不考虑其他浮点舍入时，若 Erf 的结果偏差为 $\delta e$，传到 GELU 的偏差是 $\delta y=\frac{x}{2}\delta e$。误差发生在哪个输入区间因此很重要：当 $x$ 位于负半轴尾部，$1+\operatorname{erf}(x/\sqrt{2})$ 接近零，有限精度可能使结果提前归零。这时相对误差可能很大，但绝对误差仍然很小，必须结合真实输入分布和后续网络来判断影响。
+
+验证时可先用相同输入比较 Erf 的分段误差和饱和位置，再比较完整 GELU 子图与融合路径，最后将实测误差注入对应位置并观察检测结果。独立探针有助于定位，但提取子图或增加中间输出可能改变融合与精度路径，需要结合原图的执行信息解读。
+
 早期探针发现 GELU/Erf 存在误差，但局部误差较大，不足以说明它造成了最终检测失败。进一步将实测扰动注入 CPU 模型，检测结果没有出现对应变化，因此不能把 GELU/Erf 写成唯一主因，也不能把 GELU 融合写成已经解决问题的方案。
 
 这组实验的价值在于将局部异常与任务影响分开。扰动注入需要说明注入位置、幅度和方式；即使没有复现故障，也只是削弱当前归因，不能证明该算子在所有输入下都无影响。
@@ -283,6 +298,8 @@ encoder 的 EPContext 固化 HTP 执行产物，不能当作普通 CPU ONNX 使�
 # 九、参考资料
 
 - [DEIMv2：decoder、FDR、RMSNorm 与后处理实现](https://github.com/Intellindust-AI-Lab/DEIMv2/tree/main/engine/deim)
+- [PyTorch：GELU 定义与近似形式](https://docs.pytorch.org/docs/stable/generated/torch.nn.GELU.html)
+- [CANN Erf：arch35 内核入口与计算 DAG](https://github.com/hicann/ops-math/tree/master/math/erf/op_kernel)
 - [QNN EP：浮点精度、op affinity 与 profiling](https://github.com/onnxruntime/onnxruntime-qnn/blob/main/docs/execution_providers/QNN-ExecutionProvider.md)
 - [QNN EP 源码：节点支持检查与分区](https://github.com/onnxruntime/onnxruntime-qnn/blob/main/onnxruntime/core/providers/qnn/qnn_execution_provider.cc)
 - [QAI AppBuilder：精度检查与输出映射](https://github.com/qualcomm/qai-appbuilder/blob/main/tools/skills/qai-runner-skill/references/accuracy_checking.md)
