@@ -89,7 +89,7 @@
 | 2026-09-01 | 2026-09-02 | 教程 | [Qualcomm GenieX 的 GGUF 与 QAIRT 部署](../topics/tutorial/Qualcomm_GenieX部署.md) |
 | 2026-09-03 | 2026-09-09 | 教程 | [Qualcomm MNN 本地编译与模型部署](../topics/tutorial/Qualcomm_MNN编译与部署.md) |
 | 2026-09-09 | 2026-09-09 | 专题 | [TensorRT FP16 数值异常排查：QKV 布局的等价改写](../topics/graphs-operators/NVIDIA_QKV布局与融合.md) |
-| 2026-09-17 | 2026-10-08 | 专题 | [Qualcomm HTP 上 DEIM 的数值误差与拆图](../topics/quantization-accuracy/Qualcomm_DEIM精度归因.md) |
+| 2026-09-17 | 2026-10-27 | 专题 | [Qualcomm HTP 上 DEIM 的数值误差与拆图](../topics/quantization-accuracy/Qualcomm_DEIM精度归因.md) |
 | 2026-09-21 | 2026-09-24 | 专题 | [视觉 patch embedding 的等价改写：从 Conv3D 到 Linear](../topics/graphs-operators/AMD_Conv3D等价改写.md) |
 | 2026-09-22 | 2026-09-23 | 专题 | [AMD Qwen3.5 训练的故障定位与性能优化](../topics/engineering-runtime/AMD_Qwen3.5训练故障.md) |
 
@@ -98,6 +98,9 @@
 | 首次工作 | 更新范围截止 | 类型 | 内容 |
 | --- | --- | --- | --- |
 | 2026-10-20 | 2026-10-20 | 专题 | [NVIDIA KV Cache 量化中的 NVFP4 与 TurboQuant](../topics/quantization-accuracy/NVIDIA_KV缓存量化.md) |
+| 2026-10-24 | 2026-10-30 | 专题 | [PyTorch 派生缓存的精度转换与失效处理](../topics/engineering-runtime/PyTorch_派生缓存与精度切换.md) |
+| 2026-10-28 | 2026-10-30 | 专题 | [训练 NaN 的失败现场与状态恢复](../topics/engineering-runtime/训练NaN_失败现场与状态恢复.md) |
+| 2026-10-30 | 2026-10-30 | 专题 | [ONNX 导出中的 Python 形状计算与静态适配](../topics/graphs-operators/ONNX_形状计算与静态适配.md) |
 
 ## 整理范围
 
