@@ -69,7 +69,6 @@
 
 | 首次工作 | 更新范围截止 | 类型 | 内容 |
 | --- | --- | --- | --- |
-| 2026-07-02 | 2026-11-10 | 专题 | [Qwen 小模型的结构化输出与任务评测](../topics/models-training/Qwen_结构化输出训练.md) |
 | 2026-07-23 | 2026-09-09 | 教程 | [Qualcomm llama.cpp 部署与性能分析](../topics/tutorial/Qualcomm_llama.cpp部署教程.md) |
 | 2026-07-24 | 2026-09-24 | 教程 | [Qualcomm QNN 环境部署与 ABI 排查](../topics/tutorial/Qualcomm_QNN依赖与ABI.md) |
 
