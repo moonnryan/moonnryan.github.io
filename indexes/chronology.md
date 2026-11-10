@@ -100,7 +100,7 @@
 | 2026-10-20 | 2026-10-20 | 专题 | [NVIDIA KV Cache 量化中的 NVFP4 与 TurboQuant](../topics/quantization-accuracy/NVIDIA_KV缓存量化.md) |
 | 2026-10-24 | 2026-10-30 | 专题 | [PyTorch 派生缓存的精度转换与失效处理](../topics/engineering-runtime/PyTorch_派生缓存与精度切换.md) |
 | 2026-10-28 | 2026-10-30 | 专题 | [训练 NaN 的失败现场与状态恢复](../topics/engineering-runtime/训练NaN_失败现场与状态恢复.md) |
-| 2026-10-29 | 2026-11-10 | 专题 | [多模态决策评测中的排序、阈值与概率校准](../topics/data-evaluation/多模态决策_排序阈值与概率校准.md) |
+| 2026-10-29 | 2026-11-10 | 专题 | [多模态决策模型评测：任务、阈值与概率校准](../topics/data-evaluation/多模态决策_排序阈值与概率校准.md) |
 | 2026-10-30 | 2026-10-30 | 专题 | [ONNX 导出中的 Python 形状计算与静态适配](../topics/graphs-operators/ONNX_形状计算与静态适配.md) |
 
 ## 整理范围
